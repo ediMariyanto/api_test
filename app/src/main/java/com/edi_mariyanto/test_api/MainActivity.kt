@@ -2,8 +2,8 @@ package com.edi_mariyanto.test_api
 
 import android.os.Bundle
 import android.util.Log
+import android.widget.TextView
 import androidx.activity.ComponentActivity
-import androidx.activity.compose.setContent
 import com.edi_mariyanto.test_api.api.ApiConfig
 import com.edi_mariyanto.test_api.vm.HomeViewModel
 import com.example.example.UserResponse
@@ -15,10 +15,14 @@ class MainActivity : ComponentActivity() {
     val TAG: String = "MainActivity"
 
     private lateinit var mainViewModel: HomeViewModel
+    private lateinit var tvMainText: TextView
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.main)
+
+        tvMainText = findViewById(R.id.tv_text_main)
 
         mainViewModel = HomeViewModel()
 
@@ -54,9 +58,10 @@ class MainActivity : ComponentActivity() {
     }
 
 
-    fun subscribeData(){
+    fun subscribeData() {
         mainViewModel.usersDataList.observe(this) {
             println(it)
+            tvMainText.text = it.toString()
         }
     }
 
