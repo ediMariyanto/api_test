@@ -24,9 +24,12 @@ class MainActivity : ComponentActivity() {
 
 //        Log.i(TAG, "onCreate: " + mainViewModel.getUsers())
 
-        //subscribeData() if using MVVM, data akan dikirimkan secara reactive menggunakan LiveData
 
-        getUsers()
+        subscribeData() //if using MVVM, data akan dikirimkan secara reactive menggunakan LiveData
+
+        mainViewModel.getUsers()
+
+//        getUsers()
 
 
     }
