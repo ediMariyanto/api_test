@@ -8,4 +8,8 @@ interface ApiServices {
 
     @GET("users")
     fun getUser(): Call<List<UserResponse>>
+
+
+    @GET("todos")
+    fun getTodos(): Call<List<UserResponse>>
 }

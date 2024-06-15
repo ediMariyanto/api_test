@@ -26,11 +26,7 @@ class MainActivity : ComponentActivity() {
 
         mainViewModel = HomeViewModel()
 
-//        Log.i(TAG, "onCreate: " + mainViewModel.getUsers())
-
-
         subscribeData() //if using MVVM, data akan dikirimkan secara reactive menggunakan LiveData
-
         mainViewModel.getUsers()
 
 //        getUsers()
@@ -38,24 +34,6 @@ class MainActivity : ComponentActivity() {
 
     }
 
-    fun getUsers() {
-        val getUsers = ApiConfig.getApiService().getUser()
-
-        getUsers.enqueue(object : retrofit2.Callback<List<UserResponse>> {
-            override fun onResponse(
-                call: Call<List<UserResponse>>,
-                response: Response<List<UserResponse>>
-            ) {
-                if (response.isSuccessful) {
-                    println("onResponse: " + response.body())
-                }
-            }
-
-            override fun onFailure(call: Call<List<UserResponse>>, t: Throwable) {
-                Log.e(TAG, "onFailure: ", t)
-            }
-        })
-    }
 
 
     fun subscribeData() {
