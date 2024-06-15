@@ -34,6 +34,26 @@ class MainActivity : ComponentActivity() {
 
     }
 
+ ///// coba tambahin
+    fun getUsers() {
+        val getUsers = ApiConfig.getApiService().getUser()
+
+        getUsers.enqueue(object : retrofit2.Callback<List<UserResponse>> {
+            override fun onResponse(
+                call: Call<List<UserResponse>>,
+                response: Response<List<UserResponse>>
+            ) {
+                if (response.isSuccessful) {
+                    println("onResponse: " + response.body())
+                }
+            }
+
+            override fun onFailure(call: Call<List<UserResponse>>, t: Throwable) {
+                Log.e(TAG, "onFailure: ", t)
+            }
+        })
+    }
+
 
 
     fun subscribeData() {
